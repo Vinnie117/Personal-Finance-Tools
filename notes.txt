@@ -1,3 +1,7 @@
 To do
 - Merge Sankey plot to app.py in order to deploy with Heroku
   - need to access / read data file (yaml) with data for the dashboard
+  
+  
+  https://stackoverflow.com/questions/65885445/how-to-upload-data-file-to-a-heroku-deployed-dash-web-app
+  
