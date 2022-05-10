@@ -1,20 +1,10 @@
+from turtle import width
 import plotly.graph_objects as go
-#import urllib.request
-import json
 import yaml
 
-# url = 'A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.json'
-# response = urllib.request.urlopen(url)
-# data = json.loads(response.read())
-
-# with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.json') as f:
-#     data = json.load(f)
-
+# load data
 with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml') as f:
     data = yaml.safe_load(f)
-
-# with open('Userdetails.yaml') as f:
-#     data = yaml.load(f, Loader=SafeLoader)
 
 # override gray link colors with 'source' colors
 opacity = 0.4
@@ -23,9 +13,11 @@ data['data'][0]['node']['color'] = ['rgba(255,0,255, 0.8)' if color == "magenta"
 data['data'][0]['link']['color'] = [data['data'][0]['node']['color'][src].replace("0.8", str(opacity))
                                     for src in data['data'][0]['link']['source']]
 
+
+
 fig = go.Figure(data=[go.Sankey(
-    valueformat = ".0f",
-    valuesuffix = "TWh",
+    valueformat = data['data'][0]['valueformat'],
+    valuesuffix = data['data'][0]['valuesuffix'],
     # Define nodes
     node = dict(
       pad = 15,
@@ -43,6 +35,8 @@ fig = go.Figure(data=[go.Sankey(
       color =  data['data'][0]['link']['color']
 ))])
 
-fig.update_layout(title_text="Energy forecast for 2050<br>Source: Department of Energy & Climate Change, Tom Counsell via <a href='https://bost.ocks.org/mike/sankey/'>Mike Bostock</a>",
-                  font_size=10)
+fig.update_layout(title_text = data['layout']['title']['text'],
+                  font_size = data['layout']['font']['size'],
+                  width = data['layout']['width'],
+                  height = data['layout']['height'])
 fig.show()
