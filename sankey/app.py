@@ -1,5 +1,10 @@
 import plotly.graph_objects as go
 
+# from dash import Dash, dcc, html, Input, Output
+# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+# app = Dash(__name__, external_stylesheets=external_stylesheets)
+# server = app.server
+
 fig = go.Figure(data=[go.Sankey(
     node = dict(
       pad = 15,
@@ -16,3 +21,6 @@ fig = go.Figure(data=[go.Sankey(
 
 fig.update_layout(title_text="Basic Sankey Diagram", font_size=10)
 fig.show()
+
+# if __name__ == '__main__':
+#     app.run_server(debug=True)
