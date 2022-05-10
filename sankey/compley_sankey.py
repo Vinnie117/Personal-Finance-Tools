@@ -1,9 +1,20 @@
 import plotly.graph_objects as go
-import urllib.request, json
+#import urllib.request
+import json
+import yaml
 
-url = 'https://raw.githubusercontent.com/plotly/plotly.js/master/test/image/mocks/sankey_energy.json'
-response = urllib.request.urlopen(url)
-data = json.loads(response.read())
+# url = 'A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.json'
+# response = urllib.request.urlopen(url)
+# data = json.loads(response.read())
+
+# with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.json') as f:
+#     data = json.load(f)
+
+with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml') as f:
+    data = yaml.safe_load(f)
+
+# with open('Userdetails.yaml') as f:
+#     data = yaml.load(f, Loader=SafeLoader)
 
 # override gray link colors with 'source' colors
 opacity = 0.4
