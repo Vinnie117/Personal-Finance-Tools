@@ -32,6 +32,7 @@ import urllib.request
 #################################################################
 
 app = Dash(__name__)
+server = app.server
 
 # get data 
 url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
