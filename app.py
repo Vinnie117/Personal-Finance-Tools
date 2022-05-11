@@ -59,11 +59,16 @@ fig = go.Figure(data=[go.Sankey(
       color =  data['data'][0]['link']['color']
 ))])
 
+fig.update_layout(title_text = data['layout']['title']['text'], # ABC Test
+                  font_size = data['layout']['font']['size'],
+                  width = data['layout']['width'],
+                  height = data['layout']['height'])
+
 app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
+    html.H1(children='Hello World'),
 
     html.Div(children='''
-        Dash: A web application framework for your data.
+        Dashboard: Dies ist eine Testanwendung.
     '''),
 
     dcc.Graph(
