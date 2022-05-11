@@ -1,6 +1,8 @@
 To do
 - import sankey plot "fig" as modulue into app.py
 - See, if static labels can be printed / annotated to the dashboard
+  - https://plotly.com/python/text-and-annotations/
 
 - add dynamic elements
+- enable import of values with a CSV file? or type them into dynamic elements?
   
