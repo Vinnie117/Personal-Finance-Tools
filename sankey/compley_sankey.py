@@ -1,10 +1,16 @@
 from turtle import width
 import plotly.graph_objects as go
 import yaml
+import urllib.request
 
 # load data
-with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml') as f:
-    data = yaml.safe_load(f)
+# with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml') as f:
+#     data = yaml.safe_load(f)
+
+url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
+response = urllib.request.urlopen(url)
+data = yaml.safe_load(response.read())
+
 
 # override gray link colors with 'source' colors
 opacity = 0.4
