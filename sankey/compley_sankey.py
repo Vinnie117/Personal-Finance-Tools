@@ -30,7 +30,9 @@ fig = go.Figure(data=[go.Sankey(
       thickness = 15,
       line = dict(color = "black", width = 0.5),
       label =  data['data'][0]['node']['label'],
-      color =  data['data'][0]['node']['color']
+      color =  data['data'][0]['node']['color'],
+      x = [0.5],       # manual position of the node!
+      y = [0.8]
     ),
     # Add links
     link = dict(
@@ -45,6 +47,9 @@ fig.update_layout(title_text = data['layout']['title']['text'],
                   font_size = data['layout']['font']['size'],
                   width = data['layout']['width'],
                   height = data['layout']['height'])
+
+# distribute annotation evenly?
+# -> plot is in space between coordinates [0,1] for x and y -> specify annotations relatively
 
 fig.add_annotation(dict(font=dict(color='black',size=10),
                                         x=0.9,
