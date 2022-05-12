@@ -45,4 +45,15 @@ fig.update_layout(title_text = data['layout']['title']['text'],
                   font_size = data['layout']['font']['size'],
                   width = data['layout']['width'],
                   height = data['layout']['height'])
+
+fig.add_annotation(dict(font=dict(color='black',size=10),
+                                        x=0.9,
+                                        y=0.725,
+                                        showarrow=False,
+                                        text=data['data'][0]['link']['value'][0],
+                                        textangle=0,
+                                        xanchor='left',
+                                        xref="paper",
+                                        yref="paper"))
+
 fig.show()
