@@ -31,7 +31,7 @@ fig = go.Figure(data=[go.Sankey(
       line = dict(color = "black", width = 0.5),
       label =  data['data'][0]['node']['label'],
       color =  data['data'][0]['node']['color'],
-      x = [0.5],       # manual position of the node!
+      x = [0.5],       # manual position of the node! -> cann match with annotation in add_annotation()
       y = [0.8]
     ),
     # Add links
