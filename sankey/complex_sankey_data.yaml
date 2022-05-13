@@ -17,10 +17,10 @@ data:
         color: black
         width: 0.5
       label:
-        - Vollzeitjob
+        - Gehalt
         - Miete
-        - Sparen
         - Konsum
+        - Sparen
       color:
         - 'rgba(31, 119, 180, 0.8)'
         - 'rgba(255, 127, 14, 0.8)'
@@ -38,7 +38,7 @@ data:
       value:
         - 100
         - 70
-        - 10
+        - 30
       color:
         - 'rgba(0,0,96,0.2)'
         - 'rgba(0,0,96,0.2)'
