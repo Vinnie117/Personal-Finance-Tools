@@ -1,3 +1,4 @@
+from cmath import nan
 from dash import Dash, dcc, html, Input, Output, State
 import plotly.graph_objects as go
 import yaml
@@ -60,25 +61,36 @@ app.layout = html.Div(children=[
     ),
 
     # Test Button -> Button to submit info from Textarea to Sankey
-    html.Button('Submit', id='button_1')
+    html.Button('Submit', id='button_1', value= "")
 ])
 
 @app.callback(
-    # Output(component_id='output-container-button', component_property='children'),
-    # [Input(component_id='button_1', component_property='n_clicks')],
-    # [State('input-box', 'value')])
     Output(component_id='sankey_graph', component_property='figure'),
-    [Input(component_id='sankey', component_property='value')],
+    [Input(component_id='Submit', component_property='value')],
     [State('sankey', 'value')])
-def update_sankey(text):
+def update_sankey(abc):
     return 'The input value was "{}" and the button has been clicked {} times'.format(text)
 
 # def updated_sankey() needs to be in callback!
 
 
 # klären
-# -> wie genau erhält die Funktion ihre Argumente im Callback?
-# -> wie / wo werden Funktionsinputs erzeugt?
+# -> wie genau erhält die Funktion ihre Argumente im Callback? -> wie / wo werden Funktionsinputs erzeugt?
+# -> component_properties sind Funktionsargumente?
+'''
+Whenever an input property changes, the function that the callback decorator wraps will get 
+called automatically. Dash provides this callback function with the new value of the input 
+property as its argument, and Dash updates the property of the output component with
+whatever was returned by the function.
+'''
+# - need to connect State() with the button
+
+# https://dash.plotly.com/basic-callbacks#dash-app-with-state
+# https://dash.plotly.com/dash-core-components/textarea
+# https://dash.plotly.com/dash-core-components#button
+
+
+
 
 
 
