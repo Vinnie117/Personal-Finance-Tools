@@ -1,35 +1,7 @@
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, State
 import plotly.graph_objects as go
 import yaml
 import urllib.request
-
-# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-# app = Dash(__name__, external_stylesheets=external_stylesheets)
-
-# server = app.server
-
-
-
-# app.layout = html.Div([
-#     html.H2('Hello World'),
-#     dcc.Dropdown(['LA', 'NYC', 'MTL', 'Orschel'],
-#         'LA',
-#         id='dropdown'
-#     ),
-#     html.Div(id='display-value')
-# ])
-
-# @app.callback(Output('display-value', 'children'),
-#                 [Input('dropdown', 'value')])
-# def display_value(value):
-#     return f'You have selected {value}'
-
-
-# if __name__ == '__main__':
-#     app.run_server(debug=True)
-
-#################################################################
 
 app = Dash(__name__)
 server = app.server
@@ -66,7 +38,7 @@ fig.update_layout(title_text = data['layout']['title']['text'], # ABC Test
 
 app.layout = html.Div(children=[
     html.H1(children='Hello World'),
-
+    html.Button('Submit', id='button_1'),
     html.Div(children='''
         Dashboard: Dies ist eine Testanwendung.
     '''),
@@ -78,10 +50,23 @@ app.layout = html.Div(children=[
         dcc.Textarea(
         placeholder='Enter a value...',
         value='This is a TextArea component',
-        style={'width': '100%'},
-        persistence=True, persistence_type='local'
+        style={'width': '100%'}
     )
 ])
+
+@app.callback(
+    Output('output-container-button', 'children'),
+    [Input('button_1', 'n_clicks')],
+    [State('input-box', 'value')])
+
+def update_output(n_clicks, value):
+    return 'The input value was "{}" and the button has been clicked {} times'.format(
+        value,
+        n_clicks
+    )
+
+
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
