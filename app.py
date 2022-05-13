@@ -38,27 +38,34 @@ fig.update_layout(title_text = data['layout']['title']['text'], # ABC Test
 
 app.layout = html.Div(children=[
     html.H1(children='Hello World'),
-    html.Button('Submit', id='button_1'),
     html.Div(children='''
         Dashboard: Dies ist eine Testanwendung.
     '''),
 
+    # Sankey Plot
     dcc.Graph(
         id='example-graph',
         figure=fig
     ),
-        dcc.Textarea(
-        placeholder='Enter a value...',
-        value='This is a TextArea component',
-        style={'width': '100%'}
-    )
+
+    # Textbox for Sankey input
+    dcc.Textarea(
+    placeholder='Enter a value...',
+    value='This is a TextArea component',
+    style={'width': '100%'}
+    ),
+
+    # Test Button -> Button to submit info from Textarea to Sankey
+    html.Div(dcc.Input(id='input-box', type='text')),
+    html.Button('Submit', id='button_1'),
+    html.Div(id='output-container-button',
+             children='Enter a value and press submit'),
 ])
 
 @app.callback(
     Output('output-container-button', 'children'),
     [Input('button_1', 'n_clicks')],
     [State('input-box', 'value')])
-
 def update_output(n_clicks, value):
     return 'The input value was "{}" and the button has been clicked {} times'.format(
         value,
