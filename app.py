@@ -85,6 +85,10 @@ whatever was returned by the function.
 '''
 # - need to connect State() with the button
 
+# - evtl. nur eine einzige Zeile in dem Textfeld durchreichen und ein minimales Sankey im Callback bauen?
+# - ein 2. Textfeld im Frontend einbauen um den Text, mit dem das Callback-Sankey gebaut wird zu prüfen
+#   - gibt es dafür eine einfachere Lösung? 
+
 # https://dash.plotly.com/basic-callbacks#dash-app-with-state
 # https://dash.plotly.com/dash-core-components/textarea
 # https://dash.plotly.com/dash-core-components#button
