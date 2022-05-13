@@ -74,6 +74,12 @@ app.layout = html.Div(children=[
     dcc.Graph(
         id='example-graph',
         figure=fig
+    ),
+        dcc.Textarea(
+        placeholder='Enter a value...',
+        value='This is a TextArea component',
+        style={'width': '100%'},
+        persistence=True, persistence_type='local'
     )
 ])
 
