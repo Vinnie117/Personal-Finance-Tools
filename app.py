@@ -2,6 +2,7 @@ from dash import Dash, dcc, html, Input, Output, State
 import plotly.graph_objects as go
 import yaml
 import urllib.request
+from sankey import test
 
 app = Dash(__name__)
 server = app.server
@@ -81,7 +82,7 @@ def update_sankey(dummy_n_clicks, text):
       thickness = 15,
       line = dict(color = "black", width = 0.5),
       #label =  [text.split()[1], "Miete", "Konsum", "Sparen"]
-      label =  list(set(text.split()))
+      label =  test.node_label(text)
       #label =  data['data'][0]['node']['label']
     ),
     # Add links
