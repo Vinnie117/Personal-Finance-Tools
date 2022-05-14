@@ -77,7 +77,7 @@ def update_sankey(a, b):
       pad = 15,
       thickness = 15,
       line = dict(color = "black", width = 0.5),
-      label =  [b, "Miete", "Konsum", "Sparen"],
+      label =  [b.split()[0], "Miete", "Konsum", "Sparen"],
       color =  data['data'][0]['node']['color']
     ),
     # Add links
@@ -92,11 +92,12 @@ def update_sankey(a, b):
     return fig2
 
 
-
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
 # klären
 # -> wie genau erhält die Funktion ihre Argumente im Callback? -> wie / wo werden Funktionsinputs erzeugt?
-#    -> return value of Input() will be used for function argument
+#    -> return value of Input() and State() will be used for function argument
 
 # -> component_properties sind Funktionsargumente?
 '''
@@ -114,13 +115,3 @@ whatever was returned by the function.
 # https://dash.plotly.com/basic-callbacks#dash-app-with-state
 # https://dash.plotly.com/dash-core-components/textarea
 # https://dash.plotly.com/dash-core-components#button
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
-
