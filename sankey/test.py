@@ -11,23 +11,20 @@ ls = data['data'][0]['node']['label']
 ############
 
 value= 'Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen'
-print(value)  # -> ['Gehalt', 'Dividenden', 'Budget', 'Miete', 'Konsum', 'Sparen'] extrahieren!
-ls_value = value.split()
+#print(value)  # -> ['Gehalt', 'Dividenden', 'Budget', 'Miete', 'Konsum', 'Sparen'] extrahieren!
+
+ls_value = value.split() # split string into a list
+
+indices = range(len(ls_value)) 
+labels = [ls_value[i] for i in indices if not ls_value[i].startswith('[')] # all labels (with duplicates)
+
+unique_labels = list(sorted(set(ls_value), key=ls_value.index)) # unique labels
+indices_unique = range(len(unique_labels))
+unique_labels = [unique_labels[i] for i in indices_unique if not unique_labels[i].startswith('[')]
+
+print(labels)
+print(unique_labels)
 print(ls_value)
 
-print(ls_value[0,1])
-
-unique_values = list(set(value.split()))
-x = re.findall('([A-Z])\w+', str(unique_values))
-
-print(x)
-
-
-
-
-
-
-
-
-
+# Order we want: [Gehalt, Dividenden, Budget, Miete, Konsum, Sparen]
 
