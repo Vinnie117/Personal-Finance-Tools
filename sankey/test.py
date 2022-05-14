@@ -1,6 +1,7 @@
 from enum import unique
 import re
 import yaml
+from itertools import tee, islice, chain
 
 with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 'r') as file:
     data = yaml.safe_load(file)
@@ -27,4 +28,30 @@ print(unique_labels)
 print(ls_value)
 
 # Order we want: [Gehalt, Dividenden, Budget, Miete, Konsum, Sparen]
+index = [0,3,6,9]
+past = []
 
+# for i in ls_value[::3]:
+#     if i not in past and not i.startswith('['):
+#         past.append(i)
+#         print(i)
+#     if i in past:
+#         i-1 
+
+# print(past)
+
+i = 0
+while i < len(ls_value)-1:
+    if ls_value[i] not in past and not ls_value[i].startswith('['):
+        past.append(ls_value[i])
+        i = i + 3
+    if ls_value[i] in past:
+        i = i - 1
+        past.append(ls_value[i])
+        print(ls_value[i])
+        i = i + 3
+
+print(past)
+
+
+print("END")
