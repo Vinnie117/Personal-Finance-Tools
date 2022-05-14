@@ -1,4 +1,3 @@
-from cmath import nan
 from dash import Dash, dcc, html, Input, Output, State
 import plotly.graph_objects as go
 import yaml
@@ -8,9 +7,13 @@ app = Dash(__name__)
 server = app.server
 
 # get data 
-url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
-response = urllib.request.urlopen(url)
-data = yaml.safe_load(response.read())
+# url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
+# response = urllib.request.urlopen(url)
+# data = yaml.safe_load(response.read())
+
+# data for local testing
+with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 'r') as file:
+    data = yaml.safe_load(file)
 
 # Built Sankey with plotly
 fig = go.Figure(data=[go.Sankey(
@@ -67,7 +70,7 @@ app.layout = html.Div(children=[
     Output(component_id='sankey_graph', component_property='figure'),
     [Input(component_id='button_1', component_property='n_clicks')],
     [State('sankey', 'value')])
-def update_sankey(a, b):
+def update_sankey(dummy_n_clicks, text):
 
     fig2 = go.Figure(data=[go.Sankey(
     valueformat = data['data'][0]['valueformat'],
@@ -77,7 +80,7 @@ def update_sankey(a, b):
       pad = 15,
       thickness = 15,
       line = dict(color = "black", width = 0.5),
-      label =  [b.split()[0], "Miete", "Konsum", "Sparen"],
+      label =  data['data'][0]['node']['label'], #[text.split()[1], "Miete", "Konsum", "Sparen"],
       color =  data['data'][0]['node']['color']
     ),
     # Add links
@@ -94,6 +97,9 @@ def update_sankey(a, b):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
+
+
 
 # klären
 # -> wie genau erhält die Funktion ihre Argumente im Callback? -> wie / wo werden Funktionsinputs erzeugt?

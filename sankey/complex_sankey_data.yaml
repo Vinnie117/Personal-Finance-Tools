@@ -18,6 +18,8 @@ data:
         width: 0.5
       label:
         - Gehalt
+        - Dividenden
+        - Budget
         - Miete
         - Konsum
         - Sparen
@@ -29,20 +31,28 @@ data:
     link:
       source:
         - 0
-        - 0
-        - 0
-      target:
         - 1
         - 2
+        - 2
+        - 2
+      target:
+        - 2
+        - 2
         - 3
+        - 4
+        - 5
       value:
         - 100
+        - 20
         - 70
         - 30
-      color:
+        - 20
+      color: # can be strings of hex, rgb, rgba, ... or colornames
         - 'rgba(0,0,96,0.2)'
         - 'rgba(0,0,96,0.2)'
-        - goldenrod
+        - 'rgba(0,0,96,0.2)'
+        - 'rgba(0,0,96,0.2)'
+        - 'rgba(0,0,96,0.2)'
       label:
         - stream 1
         - ''
