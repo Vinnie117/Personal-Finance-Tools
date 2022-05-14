@@ -7,25 +7,15 @@ with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 
     data = yaml.safe_load(file)
 
 ls = data['data'][0]['node']['label']
-#print(ls)
-
-############
 
 value= 'Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen'
-#print(value)  # -> ['Gehalt', 'Dividenden', 'Budget', 'Miete', 'Konsum', 'Sparen'] extrahieren!
+test = value.split() # split string into a list
+############
 
-ls_value = value.split() # split string into a list
+print(test)
 
-# indices = range(len(ls_value)) 
-# labels = [ls_value[i] for i in indices if not ls_value[i].startswith('[')] # all labels (with duplicates)
-
-# unique_labels = list(sorted(set(ls_value), key=ls_value.index)) # unique labels
-# indices_unique = range(len(unique_labels))
-# unique_labels = [unique_labels[i] for i in indices_unique if not unique_labels[i].startswith('[')]
-
-# print(labels)
-# print(unique_labels)
-# print(ls_value)
+source_nodes = []
+target_nodes = []
 
 def node_label(text):
 
@@ -42,15 +32,35 @@ def node_label(text):
     i = 0
     while i < len(ls_value):
         if ls_value[i] not in past and not ls_value[i].startswith('['):
+            print(ls_value[i])
             past.append(ls_value[i])
+            print(past)
             i = i + 3
-        if i < len(ls_value) and ls_value[i] in past:
+            print(i)
+        if i <= len(ls_value) and ls_value[i] in past:
             i = i - 1
             past.append(ls_value[i])
             i = i + 3
     return past
 
-#print(node_label(value))
+print(node_label(value))
+
+
+def link_value(text):
+    '''
+    This function evaluates a string of user input and filters for the flow values, 
+    i.e. thickness of links
+    '''
+    ls_value = text.split()
+    flows = []
+    i = 1
+
+    while i < len(ls_value):
+        flow = int(ls_value[i][1:-1])
+        flows.append(flow)
+        i = i + 3
+
+    return flows
 
 
 #print("END")

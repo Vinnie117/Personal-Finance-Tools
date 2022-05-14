@@ -89,7 +89,7 @@ def update_sankey(dummy_n_clicks, text):
     link = dict(
       source =  data['data'][0]['link']['source'],
       target =  data['data'][0]['link']['target'],
-      value =  data['data'][0]['link']['value'],
+      value =  test.link_value(text),
       label =  data['data'][0]['link']['label'],
       color =  data['data'][0]['link']['color']
     ))])

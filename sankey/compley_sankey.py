@@ -4,12 +4,12 @@ import yaml
 import urllib.request
 
 # load data
-# with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml') as f:
-#     data = yaml.safe_load(f)
+with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml') as f:
+    data = yaml.safe_load(f)
 
-url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
-response = urllib.request.urlopen(url)
-data = yaml.safe_load(response.read())
+# url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
+# response = urllib.request.urlopen(url)
+# data = yaml.safe_load(response.read())
 
 
 # override gray link colors with 'source' colors
@@ -31,8 +31,8 @@ fig = go.Figure(data=[go.Sankey(
       line = dict(color = "black", width = 0.5),
       label =  data['data'][0]['node']['label'],
       color =  data['data'][0]['node']['color'],
-      x = [0.5],       # manual position of the node! -> cann match with annotation in add_annotation()
-      y = [0.8]
+#      x = [0.5],       # manual position of the node! -> cann match with annotation in add_annotation()
+#      y = [0.8]
     ),
     # Add links
     link = dict(
