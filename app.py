@@ -56,26 +56,48 @@ app.layout = html.Div(children=[
     dcc.Textarea(
     id='sankey',
     value='Gehalt [100] Miete \nGehalt [70] Konsum\nGehalt [30] Sparen',    
-    placeholder='Enter a value...',
     style={'width': '100%'}
     ),
 
     # Test Button -> Button to submit info from Textarea to Sankey
-    html.Button('Submit', id='button_1', value= "")
+    html.Button('Submit', id='button_1', n_clicks=0)
 ])
 
 @app.callback(
     Output(component_id='sankey_graph', component_property='figure'),
-    [Input(component_id='Submit', component_property='value')],
+    [Input(component_id='button_1', component_property='n_clicks')],
     [State('sankey', 'value')])
-def update_sankey(abc):
-    return 'The input value was "{}" and the button has been clicked {} times'.format(text)
+def update_sankey(a, b):
 
-# def updated_sankey() needs to be in callback!
+    fig2 = go.Figure(data=[go.Sankey(
+    valueformat = data['data'][0]['valueformat'],
+    valuesuffix = data['data'][0]['valuesuffix'],
+    # Define nodes
+    node = dict(
+      pad = 15,
+      thickness = 15,
+      line = dict(color = "black", width = 0.5),
+      label =  [b, "Miete", "Konsum", "Sparen"],
+      color =  data['data'][0]['node']['color']
+    ),
+    # Add links
+    link = dict(
+      source =  data['data'][0]['link']['source'],
+      target =  data['data'][0]['link']['target'],
+      value =  data['data'][0]['link']['value'],
+      label =  data['data'][0]['link']['label'],
+      color =  data['data'][0]['link']['color']
+    ))])
+
+    return fig2
+
+
 
 
 # klären
 # -> wie genau erhält die Funktion ihre Argumente im Callback? -> wie / wo werden Funktionsinputs erzeugt?
+#    -> return value of Input() will be used for function argument
+
 # -> component_properties sind Funktionsargumente?
 '''
 Whenever an input property changes, the function that the callback decorator wraps will get 
