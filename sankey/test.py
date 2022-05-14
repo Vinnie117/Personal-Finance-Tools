@@ -1,49 +1,33 @@
-import plotly.graph_objs as go
-import plotly.offline as py
-py.init_notebook_mode()
-import numpy as np
+from enum import unique
+import re
+import yaml
 
-data = dict(
-type='sankey',
-node = dict(
-  pad = 15,
-  thickness = 20,
-  line = dict(
-    color = "black",
-    width = 0.5
-  ),
-  label = ["A1", "A2", "B1", "B2", "C1", "C2"],
+with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 'r') as file:
+    data = yaml.safe_load(file)
 
-  color = ["blue", "blue", "blue", "blue", 
-  "gray", "white"]),#attempt to make it less visible
+ls = data['data'][0]['node']['label']
+#print(ls)
 
-link = dict(
-  source = [0,1,0,2,3,3],
-  target = [2,3,3,4,4,5],
-  value = [8,4,2,8,4,2],
-  # attempt to add labels
-  label= [8,4,2,8,4,2]))
+############
 
-layout =  dict(
-title = "Basic Sankey Diagram",
-font = dict(
-  size = 10
- ),
-    annotations=[
-        dict(
-            x=0.25,
-            y=0.75,
-            text='8',
-            showarrow=False
-        ),
-        dict(
-            x=0.75,
-            y=0.25,
-            text='4',
-            showarrow=False
-        )
-    ]
- )
+value= 'Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen'
+print(value)  # -> ['Gehalt', 'Dividenden', 'Budget', 'Miete', 'Konsum', 'Sparen'] extrahieren!
+ls_value = value.split()
+print(ls_value)
 
-fig = dict(data=[data], layout=layout)
-py.iplot(fig, validate=False)
+print(ls_value[0,1])
+
+unique_values = list(set(value.split()))
+x = re.findall('([A-Z])\w+', str(unique_values))
+
+print(x)
+
+
+
+
+
+
+
+
+
+

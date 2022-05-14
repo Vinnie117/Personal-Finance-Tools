@@ -15,7 +15,7 @@ server = app.server
 with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 'r') as file:
     data = yaml.safe_load(file)
 
-# Built Sankey with plotly
+# Built Default Sankey with plotly
 fig = go.Figure(data=[go.Sankey(
     valueformat = data['data'][0]['valueformat'],
     valuesuffix = data['data'][0]['valuesuffix'],
@@ -36,7 +36,7 @@ fig = go.Figure(data=[go.Sankey(
       color =  data['data'][0]['link']['color']
 ))])
 
-fig.update_layout(title_text = data['layout']['title']['text'], # ABC Test
+fig.update_layout(title_text = data['layout']['title']['text'], 
                   font_size = data['layout']['font']['size'],
                   width = data['layout']['width'],
                   height = data['layout']['height'])
@@ -58,8 +58,8 @@ app.layout = html.Div(children=[
     # Textbox for Sankey input
     dcc.Textarea(
     id='sankey',
-    value='Gehalt [100] Miete \nGehalt [70] Konsum\nGehalt [30] Sparen',    
-    style={'width': '100%'}
+    value='Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen',    
+    style={'width': '100%', 'height': 200}
     ),
 
     # Test Button -> Button to submit info from Textarea to Sankey
@@ -80,8 +80,9 @@ def update_sankey(dummy_n_clicks, text):
       pad = 15,
       thickness = 15,
       line = dict(color = "black", width = 0.5),
-      label =  data['data'][0]['node']['label'], #[text.split()[1], "Miete", "Konsum", "Sparen"],
-      color =  data['data'][0]['node']['color']
+      #label =  [text.split()[1], "Miete", "Konsum", "Sparen"]
+      label =  list(set(text.split()))
+      #label =  data['data'][0]['node']['label']
     ),
     # Add links
     link = dict(
@@ -116,7 +117,7 @@ whatever was returned by the function.
 
 # - evtl. nur eine einzige Zeile in dem Textfeld durchreichen und ein minimales Sankey im Callback bauen?
 # - ein 2. Textfeld im Frontend einbauen um den Text, mit dem das Callback-Sankey gebaut wird zu prüfen
-#   - gibt es dafür eine einfachere Lösung? 
+#   - gibt es dafür eine einfachere Lösung? -> einfach in einem neuen Python-skript
 
 # https://dash.plotly.com/basic-callbacks#dash-app-with-state
 # https://dash.plotly.com/dash-core-components/textarea

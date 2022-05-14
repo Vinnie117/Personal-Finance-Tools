@@ -29,6 +29,7 @@ data:
         - 'rgba(44, 160, 44, 0.8)'
         - blue
     link:
+      # source, target and value refer to index of 'label' above
       source:
         - 0
         - 1
