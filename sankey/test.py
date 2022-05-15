@@ -22,7 +22,7 @@ value= 'Gehalt [100] Budget \nDividenden [20] Budget \nBudget [50] Miete \nBudge
 
 
 test = value.split() # split string into a list
-print(test)
+#print(test)
 ############
 
 def link_colour(text):
@@ -37,7 +37,7 @@ def link_colour(text):
     
     return colours
 
-print(link_colour(value))
+#print(link_colour(value))
 
 
 def nodes(text):

@@ -8,13 +8,13 @@ app = Dash(__name__)
 server = app.server
 
 # get data 
-# url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
-# response = urllib.request.urlopen(url)
-# data = yaml.safe_load(response.read())
+url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
+response = urllib.request.urlopen(url)
+data = yaml.safe_load(response.read())
 
-# data for local testing
-with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 'r') as file:
-    data = yaml.safe_load(file)
+# # data for local testing
+# with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 'r') as file:
+#     data = yaml.safe_load(file)
 
 # Built Default Sankey with plotly
 fig = go.Figure(data=[go.Sankey(
