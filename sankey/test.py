@@ -16,11 +16,13 @@ def chunks(lst, n):
 
 ls = data['data'][0]['node']['label']
 
-value= 'Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen'
-test = value.split() # split string into a list
-#print(test)
-############
+#value= 'Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen'
+value= 'Gehalt [100] Budget \nDividenden [20] Budget \nBudget [50] Miete \nBudget [10] Sparen \nMiete [30] Hotel '
 
+
+test = value.split() # split string into a list
+print(test)
+############
 
 def nodes(text):
 
@@ -40,12 +42,14 @@ def nodes(text):
     source_links=[]
     target_links=[]
     for i in source_nodes:
-        source_links.append(source_nodes.index(i))
+        source_links.append(nodes.index(i))
     for i in target_nodes:
         target_links.append(nodes.index(i))
 
     return nodes, source_links, target_links
 
+#print(nodes(value))
+#print('PAUSE')
 
 
 ##################################################
@@ -92,7 +96,7 @@ def link_value(text):
 # target_links=[]
 
 # for i in source_nodes:
-#     source_links.append(source_nodes.index(i))
+#     source_links.append(nodes.index(i))
 
 # for i in target_nodes:
 #     target_links.append(nodes_nodes.index(i))
