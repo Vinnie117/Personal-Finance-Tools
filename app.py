@@ -93,7 +93,8 @@ def update_sankey(dummy_n_clicks, text):
       target = test.nodes(text)[2],
       value =  test.link_value(text),
       label =  data['data'][0]['link']['label'],
-      color =  data['data'][0]['link']['color']
+      #color =  data['data'][0]['link']['color']
+      color = test.link_colour(text)
     ))])
 
     return fig2

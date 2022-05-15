@@ -1,3 +1,4 @@
+from distutils import text_file
 from enum import unique
 import re
 import yaml
@@ -23,6 +24,21 @@ value= 'Gehalt [100] Budget \nDividenden [20] Budget \nBudget [50] Miete \nBudge
 test = value.split() # split string into a list
 print(test)
 ############
+
+def link_colour(text):
+
+    colours = []
+
+    text = text.split()
+    text_chunks = list(chunks(text, 3)) # list of lists
+
+    for i in text_chunks:
+        colours.append('rgba(0,0,96,0.2)') 
+    
+    return colours
+
+print(link_colour(value))
+
 
 def nodes(text):
 
