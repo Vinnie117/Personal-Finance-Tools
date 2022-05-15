@@ -18,9 +18,9 @@ ls = data['data'][0]['node']['label']
 
 value= 'Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen'
 test = value.split() # split string into a list
+#print(test)
 ############
 
-print(test)
 
 def nodes(text):
 
@@ -42,17 +42,9 @@ def nodes(text):
     for i in source_nodes:
         source_links.append(source_nodes.index(i))
     for i in target_nodes:
-        target_links.append(target_nodes.index(i))
+        target_links.append(nodes.index(i))
 
     return nodes, source_links, target_links
-
-
-check = nodes(value)
-print(check[0])
-print(check[1])
-print(check[2])
-
-print('pause')
 
 
 
@@ -103,7 +95,7 @@ def link_value(text):
 #     source_links.append(source_nodes.index(i))
 
 # for i in target_nodes:
-#     target_links.append(target_nodes.index(i))
+#     target_links.append(nodes_nodes.index(i))
 
 
 # print(source_links)

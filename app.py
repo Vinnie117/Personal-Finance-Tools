@@ -82,13 +82,15 @@ def update_sankey(dummy_n_clicks, text):
       thickness = 15,
       line = dict(color = "black", width = 0.5),
       #label =  [text.split()[1], "Miete", "Konsum", "Sparen"]
-      label =  test.node_label(text)
+      label =  test.nodes(text)[0]
       #label =  data['data'][0]['node']['label']
     ),
     # Add links
     link = dict(
-      source =  data['data'][0]['link']['source'],
-      target =  data['data'][0]['link']['target'],
+      #source =  data['data'][0]['link']['source'],
+      source = test.nodes(text)[1],
+      #target =  data['data'][0]['link']['target'],
+      target = test.nodes(text)[2],
       value =  test.link_value(text),
       label =  data['data'][0]['link']['label'],
       color =  data['data'][0]['link']['color']
