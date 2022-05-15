@@ -53,13 +53,14 @@ app.layout = html.Div(children=[
     # Sankey Plot
     dcc.Graph(
         id='sankey_graph',
-        figure=fig
+        figure=fig,
+        style={'width': '640px', 'height': '400px'}
     ),
 
     # Textbox for Sankey input
     dcc.Textarea(
     id='sankey',
-    value='Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen',    
+    value='Gehalt [100] Budget \nNebeneinkommen [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen',    
     style={'width': '100%', 'height': 200}
     ),
 
