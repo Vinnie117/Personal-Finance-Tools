@@ -7,21 +7,21 @@ import numpy as np
 from collections import OrderedDict
 
 
-with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 'r') as file:
-    data = yaml.safe_load(file)
+# with open('A:\Projects\Personal-Finance-Tools\sankey\complex_sankey_data.yaml', 'r') as file:
+#     data = yaml.safe_load(file)
 
 def chunks(lst, n):
     """Yield successive n-sized chunks from lst."""
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
 
-ls = data['data'][0]['node']['label']
+# ls = data['data'][0]['node']['label']
 
-#value= 'Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen'
-value= 'Gehalt [100] Budget \nDividenden [20] Budget \nBudget [50] Miete \nBudget [10] Sparen \nMiete [30] Hotel '
+# #value= 'Gehalt [100] Budget \nDividenden [20] Budget \n\nBudget [70] Miete \nBudget [30] Konsum \nBudget [20] Sparen'
+# value= 'Gehalt [100] Budget \nDividenden [20] Budget \nBudget [50] Miete \nBudget [10] Sparen \nMiete [30] Hotel '
 
 
-test = value.split() # split string into a list
+# test = value.split() # split string into a list
 #print(test)
 ############
 
