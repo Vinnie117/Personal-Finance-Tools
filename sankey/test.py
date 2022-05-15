@@ -22,35 +22,37 @@ test = value.split() # split string into a list
 
 print(test)
 
-value_chunks = list(chunks(test, 3))
-#print(value_chunks)
+def nodes(text):
 
-source_nodes = []
-target_nodes = []
+    text = text.split()
+    text_chunks = list(chunks(text, 3))
 
-for i in value_chunks:
-    source_nodes.append(i[0])
-    target_nodes.append(i[2])
+    source_nodes = []
+    target_nodes = []
 
-print('Source nodes: ', source_nodes)
-print('Target nodes: ', target_nodes)
+    # extracting unique node labels
+    for i in text_chunks:
+        source_nodes.append(i[0])
+        target_nodes.append(i[2])
+    nodes = list(OrderedDict.fromkeys(source_nodes+target_nodes))
 
-nodes = list(OrderedDict.fromkeys(source_nodes+target_nodes))
-print(nodes)
+    # determining link flows
+    source_links=[]
+    target_links=[]
+    for i in source_nodes:
+        source_links.append(source_nodes.index(i))
+    for i in target_nodes:
+        target_links.append(target_nodes.index(i))
 
-# resulting_list = list(source_nodes)
-# # Combining two lists and removing duplicates, without removing duplicates in original list
-# resulting_list.extend(x for x in target_nodes if x not in resulting_list)
-# #print(resulting_list)
-# # Get unique values
-# indexes = np.unique(resulting_list, return_index=True)[1] # array of indices
-# #print(indexes)
-# see = [resulting_list[index] for index in sorted(indexes)]
-# #print(see)
+    return nodes, source_links, target_links
 
 
+check = nodes(value)
+print(check[0])
+print(check[1])
+print(check[2])
 
-
+print('pause')
 
 
 
@@ -77,6 +79,50 @@ def link_value(text):
 
 
 ##################################################################################
+
+# value_chunks = list(chunks(test, 3))
+# print(value_chunks)
+
+# source_nodes = []
+# target_nodes = []
+
+# for i in value_chunks:
+#     source_nodes.append(i[0])
+#     target_nodes.append(i[2])
+
+# print('Source nodes: ', source_nodes)
+# print('Target nodes: ', target_nodes)
+
+# nodes = list(OrderedDict.fromkeys(source_nodes+target_nodes))
+# print(nodes)
+
+# source_links=[]
+# target_links=[]
+
+# for i in source_nodes:
+#     source_links.append(source_nodes.index(i))
+
+# for i in target_nodes:
+#     target_links.append(target_nodes.index(i))
+
+
+# print(source_links)
+# print(target_links)
+
+
+############
+
+# resulting_list = list(source_nodes)
+# # Combining two lists and removing duplicates, without removing duplicates in original list
+# resulting_list.extend(x for x in target_nodes if x not in resulting_list)
+# #print(resulting_list)
+# # Get unique values
+# indexes = np.unique(resulting_list, return_index=True)[1] # array of indices
+# #print(indexes)
+# see = [resulting_list[index] for index in sorted(indexes)]
+# #print(see)
+
+############
 
 # def node_label(text):
 
