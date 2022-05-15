@@ -10,6 +10,9 @@ Short term
   - https://plotly.com/python/text-and-annotations/
 
 Long-term
+- Control horizontal spacing of links
+  - https://chart-studio.plotly.com/~alishobeiri/1591/plotly-sankey-diagrams/#/
+    - see Energy Forecast Dashboard -> large gap / small gap -> node.pad
 - add dynamic elements
 - enable import of values with a CSV file? or type them into dynamic elements?
   
