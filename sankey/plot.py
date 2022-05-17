@@ -3,7 +3,7 @@ import yaml
 
 #######################################################
 # load data
-with open('A:\Projects\Personal-Finance-Tools\sankey\data.yaml') as f:
+with open('.\sankey\data.yaml') as f:
     data = yaml.safe_load(f)
 
 # url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'

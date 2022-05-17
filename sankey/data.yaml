@@ -61,7 +61,7 @@ data:
 layout:
   title:
     text: >-
-      ABC TEST
+      Sankey Dashboard
   width: 640
   height: 400
   font:
