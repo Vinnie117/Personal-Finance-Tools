@@ -1,8 +1,18 @@
 To do
+
+Short term
+- clean up code (put old code into back up archive)
+- delete unnecessary comments, comment structure for data import from local vs online (raw.github)
+- rename test.py -> functions.py
+- clean up update_sankey()
 - import sankey plot "fig" as modulue into app.py
 - See, if static labels can be printed / annotated to the dashboard
   - https://plotly.com/python/text-and-annotations/
 
+Long-term
+- Control horizontal spacing of links
+  - https://chart-studio.plotly.com/~alishobeiri/1591/plotly-sankey-diagrams/#/
+    - see Energy Forecast Dashboard -> large gap / small gap -> node.pad
 - add dynamic elements
 - enable import of values with a CSV file? or type them into dynamic elements?
   
