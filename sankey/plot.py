@@ -1,14 +1,15 @@
 import plotly.graph_objects as go
 import yaml
+import urllib.request
 
 #######################################################
 # load data
-with open('.\sankey\data.yaml') as f:
-    data = yaml.safe_load(f)
+# with open('.\sankey\data.yaml') as f:
+#     data = yaml.safe_load(f)
 
-# url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
-# response = urllib.request.urlopen(url)
-# data = yaml.safe_load(response.read())
+url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/data.yaml'
+response = urllib.request.urlopen(url)
+data = yaml.safe_load(response.read())
 #######################################################
 
 # Built Default Sankey with plotly
@@ -39,6 +40,8 @@ fig.update_layout(title_text = data['layout']['title']['text'],
                   width = data['layout']['width'],
                   height = data['layout']['height'])
 
+#fig.show()
+
 # # distribute annotation evenly?
 # # -> plot is in space between coordinates [0,1] for x and y -> specify annotations relatively
 # fig.add_annotation(dict(font=dict(color='black',size=10),
@@ -50,5 +53,3 @@ fig.update_layout(title_text = data['layout']['title']['text'],
 #                                         xanchor='left',
 #                                         xref="paper",
 #                                         yref="paper"))
-
-#fig.show()

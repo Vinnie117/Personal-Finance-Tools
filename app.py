@@ -10,12 +10,12 @@ server = app.server
 
 ###############################################################
 # get data 
-url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/complex_sankey_data.yaml'
+url = 'https://raw.githubusercontent.com/Vinnie117/personal-finance-tools/main/sankey/data.yaml'
 response = urllib.request.urlopen(url)
 data = yaml.safe_load(response.read())
 
 # # for local testing
-# with open('.\sankey\complex_sankey_data.yaml', 'r') as file:
+# with open('.\sankey\data.yaml', 'r') as file:
 #     data = yaml.safe_load(file)
 
 ##############################################################
